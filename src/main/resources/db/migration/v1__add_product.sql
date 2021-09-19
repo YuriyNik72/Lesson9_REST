@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS product;
 CREATE TABLE product (
     id INT  AUTO_INCREMENT NOT NULL  PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    price INT NOT NULL
+    price BIGINT NOT NULL
 );
 
 INSERT INTO product (title, price) VALUES
