@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Products List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body>
+<div>
+    <h1>Product's List</h1>
+
+    <div sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="POST">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th sec:authorize="hasRole('ADMIN')">Actions</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"/>
+            <td th:text="${product.title}"/>
+            <td th:text="${product.price}"/>
+            <td sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{'/app/products/delete/' + ${product.id}}" role="button">Remove</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
