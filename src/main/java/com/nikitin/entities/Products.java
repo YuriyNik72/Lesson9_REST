@@ -1,7 +1,5 @@
 package com.nikitin.entities;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,39 +7,32 @@ import javax.persistence.*;
 public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column
+    @Column(name = "id")
+    private long id;
+    @Column(name = "title")
     private String title;
-
-    @Column
+    @Column(name = "price")
     private int price;
 
-    public Products() {
-    }
 
-    public Long getId() {
-        return id;
-    }
+        public long getId() {
+            return id;
+        }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
+        public void setId(long id) {
+            this.id = id;
+        }
+        public String getTitle() {
+            return title;
+        }
+        public void setTitle(String title) {
+            this.title = title;
+        }
+        public int getPrice() {
+            return price;
+        }
+        public void setPrice(int price) {
+            this.price = price;
+        }
 }
 
