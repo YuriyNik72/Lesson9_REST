@@ -1,4 +1,4 @@
-package com.nikitin.rest;
+package com.nikitin.controllers;
 
 
 
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import com.nikitin.entities.Products;
 import com.nikitin.services.ProductService;
@@ -45,7 +46,7 @@ public class ProductRestController {
         service.createOrUpdate(product);
         return product;
     }
-
+    @Secured({"ROLE_ADMIN"})
     @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable("id") Long id) {
         service.deleteById(id);
